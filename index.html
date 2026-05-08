@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jazthin Diomampo — Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy:    #0b0f1a;
+  --navy2:   #10162a;
+  --navy3:   #161e35;
+  --teal:    #00c9a7;
+  --teal2:   #00e8c2;
+  --teal-dim: rgba(0,201,167,.12);
+  --teal-line: rgba(0,201,167,.25);
+  --blue:    #1a4fd6;
+  --sky:     #38bdf8;
+  --white:   #f0f4ff;
+  --muted:   #8896b3;
+  --card:    rgba(16,22,42,.85);
+  --display: 'Syne', sans-serif;
+  --body:    'Outfit', sans-serif;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  background: var(--navy);
+  color: var(--white);
+  font-family: var(--body);
+  font-weight: 300;
+  line-height: 1.7;
+  overflow-x: hidden;
+  cursor: default;
+}
+a{text-decoration:none;color:inherit;}
+::selection{background:rgba(0,201,167,.2);}
+::-webkit-scrollbar{width:3px;}
+::-webkit-scrollbar-track{background:var(--navy);}
+::-webkit-scrollbar-thumb{background:var(--teal);}
+
+/* ── GRID BACKGROUND ── */
+body::before{
+  content:'';
+  position:fixed;inset:0;
+  background-image:
+    linear-gradient(rgba(0,201,167,.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,201,167,.04) 1px, transparent 1px);
+  background-size:60px 60px;
+  pointer-events:none;
+  z-index:0;
+}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;
+  z-index:999;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1.4rem 6%;
+  background:rgba(11,15,26,.8);
+  backdrop-filter:blur(16px);
+  border-bottom:1px solid rgba(0,201,167,.1);
+}
+.nav-brand{
+  font-family:var(--display);
+  font-weight:800;
+  font-size:1.1rem;
+  letter-spacing:1px;
+  color:var(--white);
+}
+.nav-brand span{color:var(--teal);}
+.nav-links{display:flex;gap:2.5rem;list-style:none;}
+.nav-links a{
+  font-size:.72rem;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  color:var(--muted);
+  font-weight:500;
+  transition:color .3s;
+}
+.nav-links a:hover{color:var(--teal);}
+.nav-dot{
+  width:8px;height:8px;
+  border-radius:50%;
+  background:var(--teal);
+  box-shadow:0 0 12px var(--teal);
+  animation:pulse 2s infinite;
+}
+@keyframes pulse{
+  0%,100%{box-shadow:0 0 8px var(--teal);}
+  50%{box-shadow:0 0 20px var(--teal);}
+}
+
+/* ── HERO ── */
+#hero{
+  min-height:100vh;
+  display:grid;
+  grid-template-columns:1fr 420px;
+  gap:0;
+  padding:0 6%;
+  padding-top:90px;
+  align-items:center;
+  position:relative;
+  z-index:1;
+}
+.hero-content{
+  padding-right:5%;
+}
+.hero-status{
+  display:inline-flex;align-items:center;gap:.6rem;
+  background:rgba(0,201,167,.08);
+  border:1px solid var(--teal-line);
+  padding:.4rem 1rem;
+  border-radius:100px;
+  font-size:.68rem;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  color:var(--teal);
+  margin-bottom:2rem;
+}
+.hero-status::before{
+  content:'';width:6px;height:6px;
+  border-radius:50%;background:var(--teal);
+  animation:pulse 2s infinite;
+}
+.hero-name{
+  font-family:var(--display);
+  font-size:clamp(2.8rem,6vw,5rem);
+  font-weight:800;
+  line-height:1.05;
+  margin-bottom:1rem;
+}
+.hero-name .first{color:var(--white);}
+.hero-name .last{
+  color:transparent;
+  -webkit-text-stroke:1.5px var(--teal);
+}
+.hero-role{
+  font-size:1rem;
+  color:var(--muted);
+  letter-spacing:.5px;
+  margin-bottom:2rem;
+}
+.hero-role span{color:var(--teal);font-weight:500;}
+.hero-bio{
+  font-size:.95rem;
+  color:#a0aec0;
+  line-height:1.9;
+  max-width:480px;
+  margin-bottom:2.5rem;
+  border-left:2px solid var(--teal);
+  padding-left:1.2rem;
+}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;}
+.btn-primary{
+  padding:.85rem 2rem;
+  background:var(--teal);
+  color:var(--navy);
+  font-family:var(--body);
+  font-size:.78rem;
+  font-weight:600;
+  letter-spacing:1.5px;
+  text-transform:uppercase;
+  border:none;
+  border-radius:4px;
+  cursor:pointer;
+  transition:background .3s, transform .2s, box-shadow .3s;
+}
+.btn-primary:hover{
+  background:var(--teal2);
+  transform:translateY(-2px);
+  box-shadow:0 8px 24px rgba(0,201,167,.3);
+}
+.btn-outline{
+  padding:.85rem 2rem;
+  background:transparent;
+  color:var(--white);
+  font-family:var(--body);
+  font-size:.78rem;
+  font-weight:500;
+  letter-spacing:1.5px;
+  text-transform:uppercase;
+  border:1px solid rgba(255,255,255,.2);
+  border-radius:4px;
+  cursor:pointer;
+  transition:border-color .3s, color .3s;
+}
+.btn-outline:hover{border-color:var(--teal);color:var(--teal);}
+
+/* profile card */
+.hero-card{
+  background:var(--navy3);
+  border:1px solid var(--teal-line);
+  border-radius:16px;
+  padding:2.5rem 2rem;
+  position:relative;
+  overflow:hidden;
+  text-align:center;
+}
+.hero-card::before{
+  content:'';
+  position:absolute;top:0;left:0;right:0;
+  height:3px;
+  background:linear-gradient(to right,var(--teal),var(--sky));
+}
+.hero-card::after{
+  content:'';
+  position:absolute;
+  bottom:-60px;right:-60px;
+  width:160px;height:160px;
+  border-radius:50%;
+  background:radial-gradient(circle, rgba(0,201,167,.08), transparent 70%);
+}
+.profile-img-wrap{
+  width:150px;height:150px;
+  margin:0 auto 1.5rem;
+  border-radius:50%;
+  padding:3px;
+  background:linear-gradient(135deg,var(--teal),var(--sky));
+  position:relative;z-index:1;
+}
+.profile-img-wrap img{
+  width:100%;height:100%;
+  border-radius:50%;
+  object-fit:cover;
+  object-position:top;
+  border:3px solid var(--navy3);
+}
+.card-name{
+  font-family:var(--display);
+  font-size:1.3rem;
+  font-weight:700;
+  color:var(--white);
+  margin-bottom:.2rem;
+}
+.card-role{
+  font-size:.72rem;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  color:var(--teal);
+  margin-bottom:1.5rem;
+}
+.card-stats{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:1px;
+  background:var(--teal-line);
+  border:1px solid var(--teal-line);
+  border-radius:8px;
+  overflow:hidden;
+  margin-bottom:1.5rem;
+}
+.stat{
+  background:var(--navy2);
+  padding:.9rem .5rem;
+  text-align:center;
+}
+.stat-n{
+  font-family:var(--display);
+  font-size:1.6rem;
+  font-weight:800;
+  color:var(--teal);
+  line-height:1;
+}
+.stat-l{
+  font-size:.6rem;
+  letter-spacing:1.5px;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin-top:.2rem;
+}
+.card-tag{
+  display:inline-block;
+  background:var(--teal-dim);
+  border:1px solid var(--teal-line);
+  color:var(--teal);
+  font-size:.65rem;
+  letter-spacing:1.5px;
+  text-transform:uppercase;
+  padding:.3rem .8rem;
+  border-radius:100px;
+}
+
+/* ── SECTIONS ── */
+section{
+  padding:7rem 6%;
+  position:relative;
+  z-index:1;
+}
+.sec-label{
+  display:flex;align-items:center;gap:.8rem;
+  font-size:.62rem;
+  letter-spacing:3.5px;
+  text-transform:uppercase;
+  color:var(--teal);
+  font-weight:600;
+  margin-bottom:1.2rem;
+}
+.sec-label::before{
+  content:'';width:24px;height:1px;background:var(--teal);
+}
+.sec-title{
+  font-family:var(--display);
+  font-size:clamp(2rem,4vw,2.8rem);
+  font-weight:800;
+  color:var(--white);
+  line-height:1.15;
+  margin-bottom:3.5rem;
+}
+.sec-title span{color:var(--teal);}
+
+/* ── ABOUT ── */
+#about{background:var(--navy2);}
+.about-layout{
+  display:grid;
+  grid-template-columns:1.2fr 1fr;
+  gap:5rem;
+  align-items:start;
+}
+.about-p{
+  font-size:.95rem;
+  color:#a0aec0;
+  line-height:1.9;
+  margin-bottom:1.2rem;
+}
+.about-highlight{
+  background:var(--teal-dim);
+  border:1px solid var(--teal-line);
+  border-radius:8px;
+  padding:1.5rem;
+  margin-top:2rem;
+}
+.about-highlight p{
+  font-size:.9rem;
+  color:var(--white);
+  line-height:1.8;
+  font-style:italic;
+}
+.about-highlight cite{
+  display:block;
+  margin-top:.8rem;
+  font-size:.7rem;
+  color:var(--teal);
+  letter-spacing:2px;
+  text-transform:uppercase;
+  font-style:normal;
+}
+/* info list */
+.info-list{display:flex;flex-direction:column;gap:0;}
+.info-item{
+  display:grid;
+  grid-template-columns:110px 1fr;
+  gap:1rem;
+  padding:1rem 0;
+  border-bottom:1px solid rgba(255,255,255,.05);
+  align-items:start;
+}
+.info-item:first-child{border-top:1px solid rgba(255,255,255,.05);}
+.info-k{
+  font-size:.62rem;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  color:var(--teal);
+  font-weight:500;
+  padding-top:.15rem;
+}
+.info-v{font-size:.9rem;color:var(--white);}
+.hobbies{
+  margin-top:2rem;
+}
+.hobbies-title{
+  font-size:.65rem;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin-bottom:.8rem;
+}
+.hobby-tags{display:flex;flex-wrap:wrap;gap:.5rem;}
+.hobby-tag{
+  background:var(--navy3);
+  border:1px solid rgba(255,255,255,.08);
+  color:#a0aec0;
+  font-size:.75rem;
+  padding:.35rem .9rem;
+  border-radius:4px;
+  transition:border-color .3s, color .3s;
+}
+.hobby-tag:hover{border-color:var(--teal);color:var(--teal);}
+
+/* ── SKILLS ── */
+#skills{background:var(--navy);}
+.skills-layout{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:1.5rem;
+}
+.sk-card{
+  background:var(--navy3);
+  border:1px solid rgba(255,255,255,.06);
+  border-radius:12px;
+  padding:2rem 1.5rem;
+  transition:border-color .35s, transform .3s;
+  position:relative;
+  overflow:hidden;
+}
+.sk-card:hover{
+  border-color:var(--teal);
+  transform:translateY(-4px);
+}
+.sk-card::before{
+  content:'';
+  position:absolute;bottom:0;left:0;right:0;
+  height:2px;
+  background:linear-gradient(to right,var(--teal),var(--sky));
+  transform:scaleX(0);
+  transition:transform .4s;
+}
+.sk-card:hover::before{transform:scaleX(1);}
+.sk-num{
+  font-family:var(--display);
+  font-size:.65rem;
+  letter-spacing:3px;
+  color:var(--teal);
+  margin-bottom:1rem;
+}
+.sk-icon{font-size:2rem;margin-bottom:1rem;}
+.sk-name{
+  font-family:var(--display);
+  font-size:1.1rem;
+  font-weight:700;
+  color:var(--white);
+  margin-bottom:.6rem;
+}
+.sk-desc{font-size:.82rem;color:var(--muted);line-height:1.75;}
+.sk-level{
+  margin-top:1.2rem;
+  height:3px;
+  background:rgba(255,255,255,.06);
+  border-radius:2px;
+  overflow:hidden;
+}
+.sk-fill{
+  height:100%;
+  background:linear-gradient(to right,var(--teal),var(--sky));
+  border-radius:2px;
+}
+
+/* ── WORK ── */
+#work{background:var(--navy2);}
+.work-intro{
+  font-size:.95rem;
+  color:var(--muted);
+  max-width:500px;
+  margin-bottom:3.5rem;
+  margin-top:-2rem;
+}
+.works-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:2rem;
+}
+.work-card{
+  background:var(--navy);
+  border:1px solid rgba(255,255,255,.06);
+  border-radius:12px;
+  overflow:hidden;
+  transition:border-color .3s, transform .3s;
+}
+.work-card:hover{
+  border-color:var(--teal);
+  transform:translateY(-3px);
+}
+.work-img{
+  width:100%;
+  height:220px;
+  object-fit:cover;
+  object-position:center top;
+  display:block;
+  transition:transform .5s;
+}
+.work-card:hover .work-img{transform:scale(1.03);}
+.work-body{padding:1.5rem;}
+.work-type{
+  font-size:.62rem;
+  letter-spacing:2.5px;
+  text-transform:uppercase;
+  color:var(--teal);
+  margin-bottom:.5rem;
+}
+.work-title{
+  font-family:var(--display);
+  font-size:1.05rem;
+  font-weight:700;
+  color:var(--white);
+  margin-bottom:.5rem;
+}
+.work-desc{font-size:.82rem;color:var(--muted);line-height:1.7;}
+.work-tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:1rem;}
+.wtag{
+  background:var(--teal-dim);
+  color:var(--teal);
+  font-size:.65rem;
+  padding:.25rem .7rem;
+  border-radius:3px;
+  border:1px solid var(--teal-line);
+}
+
+/* ── CONTACT ── */
+#contact{background:var(--navy);}
+.contact-layout{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:5rem;
+}
+.contact-head{
+  font-size:.95rem;
+  color:#a0aec0;
+  line-height:1.9;
+  margin-bottom:2.5rem;
+}
+.c-items{display:flex;flex-direction:column;gap:1rem;}
+.c-item{
+  display:flex;align-items:flex-start;gap:1rem;
+  background:var(--navy3);
+  border:1px solid rgba(255,255,255,.06);
+  border-radius:8px;
+  padding:1.2rem;
+  transition:border-color .3s;
+}
+.c-item:hover{border-color:var(--teal);}
+.c-ico{
+  width:38px;height:38px;flex-shrink:0;
+  background:var(--teal-dim);
+  border:1px solid var(--teal-line);
+  border-radius:8px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1rem;color:var(--teal);
+}
+.c-lab{
+  font-size:.6rem;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin-bottom:.2rem;
+}
+.c-val{font-size:.88rem;color:var(--white);}
+
+/* form */
+.form-stack{display:flex;flex-direction:column;gap:1.2rem;}
+.fg label{
+  display:block;
+  font-size:.62rem;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  color:var(--teal);
+  margin-bottom:.5rem;
+}
+.fg input,.fg textarea{
+  width:100%;
+  background:var(--navy3);
+  border:1px solid rgba(255,255,255,.07);
+  border-radius:6px;
+  color:var(--white);
+  font-family:var(--body);
+  font-size:.9rem;
+  font-weight:300;
+  padding:.85rem 1rem;
+  outline:none;
+  transition:border-color .3s;
+}
+.fg input:focus,.fg textarea:focus{border-color:var(--teal);}
+.fg textarea{height:130px;resize:none;}
+.fg input::placeholder,.fg textarea::placeholder{color:rgba(255,255,255,.18);}
+.fg-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.send-btn{
+  padding:.95rem 2.5rem;
+  background:linear-gradient(135deg,var(--teal),var(--sky));
+  color:var(--navy);
+  border:none;border-radius:6px;
+  font-family:var(--body);
+  font-size:.75rem;font-weight:600;
+  letter-spacing:2px;text-transform:uppercase;
+  cursor:pointer;
+  transition:opacity .3s,transform .2s;
+  align-self:flex-start;
+}
+.send-btn:hover{opacity:.9;transform:translateY(-1px);}
+
+/* ── FOOTER ── */
+footer{
+  background:var(--navy2);
+  border-top:1px solid rgba(0,201,167,.12);
+  padding:2rem 6%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  font-size:.72rem;
+  color:var(--muted);
+  letter-spacing:1px;
+  position:relative;z-index:1;
+}
+.ft-brand{
+  font-family:var(--display);
+  font-size:.9rem;
+  font-weight:700;
+  color:var(--white);
+}
+.ft-brand span{color:var(--teal);}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  #hero{grid-template-columns:1fr;padding-top:100px;}
+  .hero-card{max-width:360px;margin:0 auto;}
+  .about-layout,.contact-layout{grid-template-columns:1fr;gap:3rem;}
+  .skills-layout{grid-template-columns:1fr 1fr;}
+  .works-grid{grid-template-columns:1fr;}
+  .fg-row{grid-template-columns:1fr;}
+  footer{flex-direction:column;gap:.8rem;text-align:center;}
+  section{padding:5rem 5%;}
+  nav{padding:1.2rem 5%;}
+}
+@media(max-width:600px){
+  .skills-layout{grid-template-columns:1fr;}
+  .nav-links{display:none;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-brand">Jazthin<span>.</span></div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#work">Work</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="nav-dot"></div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-content">
+    <div class="hero-status">Available for Opportunities</div>
+    <h1 class="hero-name">
+      <span class="first">Jazthin</span><br>
+      <span class="last">Diomampo</span>
+    </h1>
+    <p class="hero-role">IT Student &amp; <span>Creative Designer</span></p>
+    <p class="hero-bio">A dedicated student eager to acquire new knowledge and skills. Currently studying IT at GRC—striving toward a bright future in technology and design.</p>
+    <div class="hero-btns">
+      <a href="#work" class="btn-primary">View My Work</a>
+      <a href="#contact" class="btn-outline">Contact Me</a>
+    </div>
+  </div>
+
+  <div class="hero-card">
+    <div class="profile-img-wrap">
+      <img src="/iamage/Messenger_creation_428A3C36-7C14-4587-B854-36020B62240A.jpeg" alt="Jazthin Diomampo">
+    </div>
+    <div class="card-name">Jazthin B. Diomampo</div>
+    <div class="card-stats">
+      <div class="stat">
+        <div class="stat-n">24</div>
+        <div class="stat-l">Age</div>
+      </div>
+      <div class="stat">
+      </div>
+      <div class="stat">
+        <div class="stat-n">GRC</div>
+        <div class="stat-l">College</div>
+      </div>
+      <div class="stat">
+        <div class="stat-n">PH</div>
+        <div class="stat-l">Based</div>
+      </div>
+    </div>
+    <span class="card-tag">Open to Learn &amp; Grow</span>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="sec-label">01 — About</div>
+  <h2 class="sec-title">About <span>Me</span></h2>
+  <div class="about-layout">
+    <div>
+      <p class="about-p">am Jazthin Diomampo, a 24-year-old IT student from Valenzuela City with a deep interest in web design, graphic design, and photo manipulation.
+​I believe that every new day is an opportunity to learn something new. Through my studies at GRC, I actively seek ways to refine my skills in both technology and design.</p>
+      <div class="about-highlight">
+        <p>"Ready to learn new knowledge and skills one step, one opportunity at a time.""</p>
+        <cite>— Jazthin Diomampo</cite>
+      </div>
+      <div class="hobbies" style="margin-top:2rem;">
+        <div class="hobbies-title">Hobbies &amp; Interests</div>
+        <div class="hobby-tags">
+          <span class="hobby-tag">📚 Pagbabasa</span>
+          <span class="hobby-tag">📱 Mobile Games</span>
+          <span class="hobby-tag">🎬 Panoorin ng Pelikula</span>
+          <span class="hobby-tag">🎨 Photo Editing</span>
+          <span class="hobby-tag">💻 Web Design</span>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="info-list">
+        <div class="info-item">
+          <span class="info-k">Full Name</span>
+          <span class="info-v">Jazthin B. Diomampo</span>
+        </div>
+        <div class="info-item">
+          <span class="info-k">Age</span>
+          <span class="info-v">24 years old</span>
+        </div>
+        <div class="info-item">
+          <span class="info-k">Address</span>
+          <span class="info-v">12 B. Encarnacion St. Marulas, Valenzuela City</span>
+        </div>
+        <div class="info-item">
+          <span class="info-k">College</span>
+          <span class="info-v">Global Reciprocal College (GRC)</span>
+        </div>
+        <div class="info-item">
+          <span class="info-k">Strand</span>
+          <span class="info-v">Information Technology (IT)</span>
+        </div>
+        <div class="info-item">
+          <span class="info-k">Status</span>
+          <span class="info-v">Currently Enrolled</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="sec-label">02 — Skills</div>
+  <h2 class="sec-title">My <span>Skills</span></h2>
+  <div class="skills-layout">
+
+    <div class="sk-card">
+      <div class="sk-num">01</div>
+      <div class="sk-icon">🌐</div>
+      <div class="sk-name">Web Design</div>
+      <p class="sk-desc">Creating responsive, user-focused digital experiences that balance clean aesthetics with intuitive functionality.</p>
+      <div class="sk-level"><div class="sk-fill" style="width:82%"></div></div>
+    </div>
+
+    <div class="sk-card">
+      <div class="sk-num">02</div>
+      <div class="sk-icon">🎨</div>
+      <div class="sk-name">Graphic Design</div>
+      <p class="sk-desc">Crafting bold visual identities and marketing assets that communicate a clear story and elevate brand presence.</p>
+      <div class="sk-level"><div class="sk-fill" style="width:78%"></div></div>
+    </div>
+
+    <div class="sk-card">
+      <div class="sk-num">03</div>
+      <div class="sk-icon">📷</div>
+      <div class="sk-name">Photography</div>
+      <p class="sk-desc">Capturing high-quality, cinematic imagery with a focus on lighting, composition, and professional post-processing.</p>
+      <div class="sk-level"><div class="sk-fill" style="width:75%"></div></div>
+    </div>
+
+    <div class="sk-card">
+      <div class="sk-num">04</div>
+      <div class="sk-icon">🖼️</div>
+      <div class="sk-name">Photo Manipulation</div>
+      <p class="sk-desc">Creating imaginative composite images through layering, masking, blending, and advanced digital artistry in Photoshop.</p>
+      <div class="sk-level"><div class="sk-fill" style="width:85%"></div></div>
+    </div>
+
+    <div class="sk-card">
+      <div class="sk-num">05</div>
+      <div class="sk-icon">🔤</div>
+      <div class="sk-name">Typography</div>
+      <p class="sk-desc">Understanding font classification, pairing, and visual hierarchy — from serif to display to sans-serif applications.</p>
+      <div class="sk-level"><div class="sk-fill" style="width:70%"></div></div>
+    </div>
+
+    <div class="sk-card">
+      <div class="sk-num">06</div>
+      <div class="sk-icon">💡</div>
+      <div class="sk-name">Willingness to Learn</div>
+      <p class="sk-desc">Highly motivated and adaptable — always eager to acquire new technical and creative knowledge in the IT field.</p>
+      <div class="sk-level"><div class="sk-fill" style="width:100%"></div></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- WORK SAMPLES -->
+<section id="work">
+  <div class="sec-label">03 — Work Samples</div>
+  <h2 class="sec-title">My <span>Work</span></h2>
+  <p class="work-intro">A collection of photo manipulation and design projects created during my studies.</p>
+  <div class="works-grid">
+
+    <div class="work-card">
+      <img class="work-img" src="/iamage/Messenger_creation_10779460-351F-4F9D-B2B2-86AFCD9B1E3B.jpeg" alt="Personal Skills Portfolio Page">
+      <div class="work-body">
+        <p class="work-type">Web &amp; Graphic Design</p>
+        <h3 class="work-title">Personal Skills Portfolio Page</h3>
+        <p class="work-desc">A designed portfolio skills page featuring graphic &amp; web designing and photography categories with bold typography and clean layout.</p>
+        <div class="work-tags">
+          <span class="wtag">UI Design</span>
+          <span class="wtag">Typography</span>
+          <span class="wtag">Layout</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="work-card">
+      <img class="work-img" src="/iamage/Messenger_creation_FCDE922F-7FA5-4613-87D8-606C319F34DB.jpeg">
+      <div class="work-body">
+        <p class="work-type">Photo Manipulation</p>
+        <h3 class="work-title">Bear &amp; Clouds Composite</h3>
+        <p class="work-desc">A dramatic composite placing a brown bear within towering cloud formations — demonstrating masking, blending, and atmospheric depth techniques.</p>
+        <div class="work-tags">
+          <span class="wtag">Photoshop</span>
+          <span class="wtag">Compositing</span>
+          <span class="wtag">Layer Masking</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="work-card">
+      <img class="work-img" src="/iamage/Messenger_creation_203CA8C5-0205-49C9-813A-5EDF0C20D68F_edit_14702700927620.jpg">
+      <div class="work-body">
+        <p class="work-type">Photo Manipulation</p>
+        <h3 class="work-title">Jurassic Scene Composite</h3>
+        <p class="work-desc">A creative photo composite placing a person in a jungle scene alongside a T-Rex — showcasing advanced subject extraction and scene integration.</p>
+        <div class="work-tags">
+          <span class="wtag">Photoshop</span>
+          <span class="wtag">Subject Masking</span>
+          <span class="wtag">Scene Building</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="sec-label">04 — Contact</div>
+  <h2 class="sec-title">contact <span>me</span></h2>
+  <div class="contact-layout">
+    <div>
+      <div class="c-items">
+        <div class="c-item">
+          <div class="c-ico">📍</div>
+          <div>
+            <div class="c-lab">Address</div>
+            <div class="c-val">12 B. Encarnacion St. Marulas, Valenzuela City</div>
+          </div>
+        </div>
+        <div class="c-item">
+          <div class="c-ico">🎓</div>
+          <div>
+            <div class="c-lab">School</div>
+            <div class="c-val">Global Reciprocal College — IT Strand</div>
+          </div>
+        </div>
+        <div class="c-item">
+          <div class="c-ico">📱</div>
+          <div>
+            <div class="c-lab">Status</div>
+            <div class="c-val">Currently Enrolled · Open to Opportunities</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="form-stack">
+      <div class="fg-row">
+        <div class="fg">
+          <label>Full Name</label>
+          <input type="text" placeholder="Your name">
+        </div>
+        <div class="fg">
+          <label>Email</label>
+          <input type="email" placeholder="your@email.com">
+        </div>
+      </div>
+      <div class="fg">
+        <label>Subject</label>
+        <input type="text" placeholder="What's this about?">
+      </div>
+      <div class="fg">
+        <label>Message</label>
+        <textarea placeholder="Your message here..."></textarea>
+      </div>
+      <button class="send-btn">Send Message →</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ft-brand">Jazthin<span>.</span></div>
+  <span>2026 · diomampo</span>
+  </div>
+</footer>
+
+<script>
+/* Nav active highlight on scroll */
+const secs = document.querySelectorAll('section[id]');
+const links = document.querySelectorAll('.nav-links a');
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if(e.isIntersecting){
+      links.forEach(a => a.style.color = '');
+      const active = document.querySelector(`.nav-links a[href="#${e.target.id}"]`);
+      if(active) active.style.color = 'var(--teal)';
+    }
+  });
+},{threshold:0.45});
+secs.forEach(s => obs.observe(s));
+</script>
+</body>
+</html>
